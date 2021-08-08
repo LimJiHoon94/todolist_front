@@ -1,8 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import { Route } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 function App() {
+  //멤버 초기화
+  const [members, setMembers] = useState(null);
+
+
+  useEffect(()=> {
+    axios.get('http://localhost:8080/members')
+    .then(res => setMembers(res) );
+  },[]);
   return (
+    
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
