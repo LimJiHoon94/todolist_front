@@ -3,16 +3,31 @@ import './App.css';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+//import Member from 'service/Member.js'
+
+
 
 function App() {
   //멤버 초기화
-  const [members, setMembers] = useState(null);
+/*    const [members, setMembers] = useState([]); */
 
 
-  useEffect(()=> {
-    axios.get('http://localhost:8080/members')
+  /* async getMembers() {
+    const response = await fetch('http://localhost:8080/members');
+    const result = await response.json();
+    console.log(result);
+    return result.items;
+  } */
+
+/*   useEffect(()=> {
+    member.getMembers()
+    
+    //const response = await fetch('http://localhost:8080/members') 
+    //axios.get('http://localhost:8080/members')
     .then(res => setMembers(res) );
-  },[]);
+  },[]);  */
+
+
   return (
     
     <div className="App">

@@ -3,10 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+/* import axios from 'axios';
+import Member from './service/Member'
+
+const httpClient = axios.create({
+  baseURL: 'http://localhost:8080'
+  //params: { key: process.env.REACT_APP_YOUTUBE_API_KEY },
+});
+
+const member = new Member(httpClient); */
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+   {/*  <App Member={member}/> */}
+   <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
