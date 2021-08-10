@@ -1,52 +1,35 @@
+import React, {useState, useEffect} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Route } from 'react-router-dom';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-//import Member from 'service/Member.js'
 
 
+function App () {
+const [message, setMessage] = useState([]);
+  useEffect(() => {
+  fetch('/api/test')
+  .then(response =>response.text())
+  .then(message => {
+  setMessage(message);
+  });
+  },[])
 
-function App() {
-  //멤버 초기화
-/*    const [members, setMembers] = useState([]); */
-
-
-  /* async getMembers() {
-    const response = await fetch('http://localhost:8080/members');
-    const result = await response.json();
-    console.log(result);
-    return result.items;
-  } */
-
-/*   useEffect(()=> {
-    member.getMembers()
-    
-    //const response = await fetch('http://localhost:8080/members') 
-    //axios.get('http://localhost:8080/members')
-    .then(res => setMembers(res) );
-  },[]);  */
-
-
-  return (
-    
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  /* useEffect(() => {
+    axios.get('http://localhost:8080/test').then((response) =>{
+        console.log(response);
+    });
+  },[]); */
+return (
+<div className="App">
+<header className="App-header">
+<img src={logo} className="App-logo" alt="logo"/>
+<h1 className="App-title">{message}</h1>
+</header>
+<p className="App-intro">
+To get started, edit <code>src/App.js</code> and save to reload.
+</p>
+</div>
+)
 }
-
 export default App;
+
