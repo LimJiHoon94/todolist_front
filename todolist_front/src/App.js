@@ -12,7 +12,7 @@ const [message, setMessage] = useState([]);
   .then(message => {
   setMessage(message);
   });
-  },[])
+  },[])   
 
   /* useEffect(() => {
     axios.get('http://localhost:8080/test').then((response) =>{
