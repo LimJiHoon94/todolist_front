@@ -5,6 +5,8 @@ import axios from 'axios';
 
 
 function App () {
+
+ const [members , setMembers] = useState([]); 
 const [message, setMessage] = useState([]);
   useEffect(() => {
   fetch('/api/test')
@@ -12,13 +14,13 @@ const [message, setMessage] = useState([]);
   .then(message => {
   setMessage(message);
   });
-  },[])   
+  },[])      
 
-  /* useEffect(() => {
-    axios.get('http://localhost:8080/test').then((response) =>{
+   useEffect(() => {
+    fetch('/api/members').then((response) =>{
         console.log(response);
     });
-  },[]); */
+  },[]); 
 return (
 <div className="App">
 <header className="App-header">
