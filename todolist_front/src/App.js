@@ -18,7 +18,8 @@ const [message, setMessage] = useState([]);
 
    useEffect(() => {
     fetch('/api/members').then((response) =>{
-        console.log(response);
+        console.log(response.json);
+        //setMembers = response;
     });
   },[]); 
 return (
