@@ -17,9 +17,10 @@ const [message, setMessage] = useState([]);
   },[])      
 
    useEffect(() => {
-    fetch('/api/members').then((response) =>{
+    fetch('/api/user/getallusers').then((response) =>{
         console.log(response.json);
         //setMembers = response;
+        setMembers(response);
     });
   },[]); 
 return (
