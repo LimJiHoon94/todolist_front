@@ -1,0 +1,67 @@
+.membership_area {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.membership_form {
+  width: 50vw;
+  height: 50vh;
+  background-color: #dfe6e93f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #636e7277;
+  padding: 20px;
+}
+
+.member_area {
+  display: flex;
+}
+
+.membership_title > p {
+  font-size: 50px;
+  color: #2d3436;
+  font-family: 'Jua', sans-serif;
+  margin-bottom: 30px;
+}
+.member_area {
+  flex: 1;
+}
+.member_area > p {
+  font-size: 30px;
+  color: #2d3436;
+  font-family: 'Jua', sans-serif;
+  margin-left: 20px;
+}
+
+.member_area > input {
+  margin-left: 20px;
+  width: 15vw;
+  height: 3vh;
+  border-radius: 10px;
+  background-color: #dfe6e952;
+  font-family: 'Jua', sans-serif;
+  font-size: 25px;
+}
+.member_btn {
+  margin: 5px 10px 5px 10px;
+  width: 10vw;
+  height: 5vh;
+  border-radius: 10px;
+  font-family: 'Jua', sans-serif;
+  font-size: 25px;
+  color: #2d3436;
+  background-color: #fdcb6e6e;
+}
+.member_area > input:hover {
+  background-color: #dfe6e9a6;
+}
+.member_btn:hover {
+  cursor: pointer;
+  background-color: #fdcb6e;
+}
