@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Login from './component/login/Login.jsx';
 import Membership from './component/membership/Membership.jsx';
+import TodoList from './component/todolist/TodoList.jsx'
 import './App.scss';
 
 
@@ -19,7 +20,7 @@ return (
           <Membership />
         </Route>
         <Route path="/todoList">
-            <div>todoList Main</div>
+          <TodoList />
         </Route>
       </Switch> 
     </div>

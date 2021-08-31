@@ -44,6 +44,7 @@ function Login(){
             console.log(res.data);
             if(res.data === 1){
                 alert("로그인 성공");
+                
             }else{
                 alert("로그인에 실패하였습니다.");
             }
