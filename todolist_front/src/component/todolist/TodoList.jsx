@@ -17,10 +17,14 @@ function TodoList(){
                 </div>
             </div>
             <div className="todoList">
-                
+
             </div>
             <div className="add_area">
-
+                <div className="comment">
+                    <p>설명 동해물과 백두상이 마르고 닳도록</p>
+                    <p>설명 동해물과 백두상이 마르고 닳도록</p>
+                    <p>설명 동해물과 백두상이 마르고 닳도록</p>
+                </div>
             </div>
         </div>
     )
