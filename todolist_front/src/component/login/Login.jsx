@@ -45,6 +45,7 @@ function Login(){
             if(res.data === 1){
                 alert("로그인 성공");
                 
+                history.push('/todoList');
             }else{
                 alert("로그인에 실패하였습니다.");
             }
