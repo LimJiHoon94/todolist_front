@@ -9,7 +9,7 @@ import './login_style.scss';
 
 
 
-function Login(){
+function Login(props){
 
     let history = useHistory();
 
@@ -23,6 +23,10 @@ function Login(){
     let [id , setId] = useState('');
     let [pw , setPw] = useState('');
 
+    //===================================================================
+    // 기능 : Login 처리
+    // API : http://localhost:8080/api/user/loginRun & getUser
+    // ==================================================================
     function loginRun(){
 
         if(id === ""){
@@ -33,18 +37,19 @@ function Login(){
             return;
         }
 
-        console.log('id : ' + id);
-        console.log('pw : ' + pw);
-
         api.post('/loginRun' , null , {params : {
             id : id,
             pw : pw
         }}).then((res) => {
-            console.log(res)
-            console.log(res.data);
             if(res.data === 1){
-                alert("로그인 성공");
-                
+                api.post('/getUser' , null , {params : {
+                    id : id,
+                    pw : pw
+                }}).then((res)=>{
+                    props.setUser(res.data);
+                }).catch((error)=>{
+                    alert(error);
+                });
                 history.push('/todoList');
             }else{
                 alert("로그인에 실패하였습니다.");
