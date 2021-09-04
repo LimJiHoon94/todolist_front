@@ -1,5 +1,17 @@
 /* font */
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+//font-family: 'Jua', sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Besley:wght@500&family=Nanum+Gothic&display=swap');
+//font-family: 'Besley', serif;
+//font-family: 'Nanum Gothic', sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Roboto&display=swap');
+//font-family: 'Black Han Sans', sans-serif;
+//font-family: 'Roboto', sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700&display=swap');
+//font-family: 'Nanum Myeongjo', serif;
 
 html,
 body,
@@ -134,7 +146,7 @@ a {
 }
 
 .reset_css {
-  background-image: url('back_img.jpg');
+  //background-image: url('back_img.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }

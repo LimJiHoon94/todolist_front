@@ -76,6 +76,7 @@ function Login(props){
                 </div>
                 <div className="btn_area flex_div">
                     <button className="btn login_btn" onClick={loginRun} >로그인</button>
+                    <br />
                     <Link to="/membership">
                         <button className="btn pw_btn">회원가입</button>
                     </Link>

@@ -1,7 +1,8 @@
 /* eslit-disable */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import './TodoList_style.scss'
+import './TodoList_style.scss';
+import {useLocation} from 'react-router';
 
 
 
@@ -10,6 +11,8 @@ import './TodoList_style.scss'
 function TodoList(props){
 
     let [todoList , setTodoList] = useState([]);
+    let [allGetCnt , setAllGetCnt] =useState(0);
+   
 
     const api = axios.create({
         baseURL : 'http://localhost:8080/api/todoList',
@@ -19,9 +22,20 @@ function TodoList(props){
     });
 
     useEffect(()=>{
-        console.log("투두리스트");
-        console.log(props.user);
-    })
+        getAllTodoList();
+    },[]);
+
+    function getAllTodoList(){
+        api.post('/getAllTodoContent' , null , {params : {
+            userSeq : props.user.userSeq
+            //userSeq : userSeq
+         }}).then((res)=>{
+             console.log(res.data);
+             setTodoList(res.data);
+         }).catch((error)=>{
+             alert(error);
+         }); 
+    }
 
     return(
         <div className="todoList_area">
@@ -33,13 +47,19 @@ function TodoList(props){
                 </div>
             </div>
             <div className="todoList">
+                <div className="Todo_Add">
+                    <input type="text" className="Todo_Add_Input" />
+                </div>
+
+                <div className="Todo_Content_Div">
+                    <span className="Todo_Content">할일 1번</span>
+                    <button className="Todo_Remove_Btn">remove</button>
+                </div>
 
             </div>
             <div className="add_area">
                 <div className="comment">
-                    <p>설명 동해물과 백두상이 마르고 닳도록</p>
-                    <p>설명 동해물과 백두상이 마르고 닳도록</p>
-                    <p>설명 동해물과 백두상이 마르고 닳도록</p>
+                    
                 </div>
             </div>
         </div>
