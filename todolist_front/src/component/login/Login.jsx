@@ -50,14 +50,18 @@ function Login(props){
                 }).catch((error)=>{
                     alert(error);
                 });
-                history.push('/todoList');
             }else{
                 alert("로그인에 실패하였습니다.");
             }
+
+            props.testFunction();
+            
         }).catch((error)=>{
             console.log(error)
         })
-
+    }
+    function goTodoList(){
+        history.push('/todoList');
     }
 
     return(

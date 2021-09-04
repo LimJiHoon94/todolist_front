@@ -11,8 +11,6 @@ import {useLocation} from 'react-router';
 function TodoList(props){
 
     let [todoList , setTodoList] = useState([]);
-    let [allGetCnt , setAllGetCnt] =useState(0);
-   
 
     const api = axios.create({
         baseURL : 'http://localhost:8080/api/todoList',
@@ -21,14 +19,9 @@ function TodoList(props){
         }
     });
 
-    useEffect(()=>{
-        getAllTodoList();
-    },[]);
-
     function getAllTodoList(){
         api.post('/getAllTodoContent' , null , {params : {
             userSeq : props.user.userSeq
-            //userSeq : userSeq
          }}).then((res)=>{
              console.log(res.data);
              setTodoList(res.data);
@@ -47,15 +40,17 @@ function TodoList(props){
                 </div>
             </div>
             <div className="todoList">
-                <div className="Todo_Add">
+               {/*  <div className="Todo_Add">
                     <input type="text" className="Todo_Add_Input" />
+                </div> */}
+                <div className="Todo_Get_Div">
+                    <button onClick={getAllTodoList} className="getTodoBtn">TODO - LIST</button>
                 </div>
-
-                <div className="Todo_Content_Div">
+               {/*  <div className="Todo_Content_Div">
                     <span className="Todo_Content">할일 1번</span>
                     <button className="Todo_Remove_Btn">remove</button>
                 </div>
-
+                */}
             </div>
             <div className="add_area">
                 <div className="comment">
