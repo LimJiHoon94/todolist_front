@@ -29,7 +29,7 @@ function TodoList(props){
     });
 
     
-
+    //T_TODO_CONTENT 조회
     function getAllTodoList(){
         api.post('/getAllTodoContent' , null , {params : {
             userSeq : props.user.userSeq
@@ -42,6 +42,7 @@ function TodoList(props){
          setTodoListLoad('Y');
     }
 
+    //T_TODO_CONTENT 추가
     function addTodoList(e){
         if(e.key === 'Enter'){
             console.log("add");
@@ -58,6 +59,8 @@ function TodoList(props){
             setAddContent('');
         }
     }
+
+    
 
     return(
         <div className="todoList_area">
@@ -89,7 +92,7 @@ function TodoList(props){
                     todoListLoad === 'Y'
                     ? (
                         todoList.map((todoList , i)=>{
-                            return  <TodoContent todoList={todoList} key={i} />
+                            return  <TodoContent todoList={todoList} key={i}  setTodoList={setTodoList} user={props.user}/>
                         })
                     ) : null
                 }
@@ -104,10 +107,32 @@ function TodoList(props){
 }
 
 function TodoContent(props){
+
+    const api = axios.create({
+        baseURL : 'http://localhost:8080/api/todoList',
+        headers : {
+            'Content-Type' : 'application/json'
+        }
+    });
+
+    //T_TODO_CONTENT 삭제
+    function deleteTodoContent(){
+        console.log(props.todoList.todoSeq);
+        api.post('/DeleteTodoContent' , null , {params : {
+            userSeq : props.user.userSeq,
+            todoSeq : props.todoList.todoSeq
+         }}).then((res)=>{
+             //console.log(res.data)
+            //props.setTodoList()
+         }).catch((error)=>{
+
+         }); 
+    }
+
     return(
     <div className="Todo_Content_Div">
         <span className="Todo_Content">{props.todoList.content}</span>
-        <button className="Todo_Remove_Btn">remove</button>
+        <button className="Todo_Remove_Btn" onClick={deleteTodoContent}>remove</button>
     </div>
     )
 }
