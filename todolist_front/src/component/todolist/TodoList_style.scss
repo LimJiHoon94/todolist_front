@@ -44,6 +44,42 @@
   flex: 3;
   height: 100vh;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.menu_area {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 5vh;
+  margin-right: 5vw;
+}
+.allDelete {
+  width: 5vw;
+  height: 10vh;
+  border-radius: 50px;
+  font-family: 'Nanum Myeongjo', serif;
+  cursor: pointer;
+  background-color: #f7d894bb;
+  border: 0.5px solid rgba(160, 100, 21, 0.651);
+  //마우스 효과 일반
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out;
+}
+
+.allDelete:hover {
+  background-color: #f5ae14bb;
+  color: white;
+  border: none;
+  //마우스 효과 호버
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
 }
 
 .Todo_Get_Div {
@@ -98,11 +134,24 @@
   border: 0.5px solid rgba(0, 0, 0, 0.199);
   border-radius: 5px;
   cursor: pointer;
+  //마우스 효과 일반
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.2s ease-in-out;
 }
 .Todo_Remove_Btn:hover {
   background-color: #f5ae14bb;
   color: white;
   border: none;
+  //마우스 효과 호버
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
 }
 
 .time {

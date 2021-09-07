@@ -98,8 +98,8 @@ function TodoList(props){
                 }
             </div>
             <div className="add_area">
-                <div className="comment">
-                    
+                <div className="menu_area">
+                    <button className="allDelete" ><b>All<br />remove</b></button>
                 </div>
             </div>
         </div>
@@ -122,8 +122,8 @@ function TodoContent(props){
             userSeq : props.user.userSeq,
             todoSeq : props.todoList.todoSeq
          }}).then((res)=>{
-             //console.log(res.data)
-            //props.setTodoList()
+             console.log(res.data)
+            props.setTodoList(res.data)
          }).catch((error)=>{
 
          }); 
