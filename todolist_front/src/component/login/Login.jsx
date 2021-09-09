@@ -55,7 +55,7 @@ function Login(props){
             }
 
             props.testFunction();
-            
+
         }).catch((error)=>{
             console.log(error)
         })
@@ -63,6 +63,7 @@ function Login(props){
     function goTodoList(){
         history.push('/todoList');
     }
+
 
     return(
         <div className="login_area">

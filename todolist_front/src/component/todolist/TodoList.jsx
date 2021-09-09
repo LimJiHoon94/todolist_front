@@ -60,7 +60,17 @@ function TodoList(props){
         }
     }
 
-    
+    //T_TODO_CONTENT 전체 삭제
+    function TodoListDeleteAll(){
+        console.log(props.user.userSeq);
+        api.post('/DeleteTodoContentAll' , null , {params : {
+            userSeq : props.user.userSeq
+         }}).then((res)=>{
+             setTodoList([]);
+         }).catch((error)=>{
+             alert(error);
+         }); 
+    }
 
     return(
         <div className="todoList_area">
@@ -99,7 +109,7 @@ function TodoList(props){
             </div>
             <div className="add_area">
                 <div className="menu_area">
-                    <button className="allDelete" ><b>All<br />remove</b></button>
+                    <button className="allDelete" onClick={TodoListDeleteAll}><b>All<br />remove</b></button>
                 </div>
             </div>
         </div>
