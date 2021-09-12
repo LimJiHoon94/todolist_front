@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
 .todoList_area {
   width: 100vw;
   height: 100vh;
@@ -13,7 +15,7 @@
   padding-left: 150px;
 }
 .time > h2 {
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .todoList {
@@ -26,7 +28,15 @@
 }
 .Todo_Add {
   height: 9vh;
-  border-bottom: 0.5px solid rgba(160, 100, 21, 0.651);
+  //border-bottom: 2px solid rgba(160, 100, 21, 0.651);
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.add_Line {
+  width: 88%;
+  background-color: #f7d894bb;
+  //height: 1.5px;
+  border: 0.5px solid #e09f11fb;
 }
 
 .Todo_Add_Input {
@@ -35,7 +45,7 @@
   width: 31vw;
   border: none;
   background-color: #f7d894bb;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.192);
+  //border-bottom: 0.5px solid rgba(0, 0, 0, 0.192);
   font-size: 25px;
   font-family: 'Nanum Myeongjo', serif;
 }
@@ -116,8 +126,8 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-right: 40px;
+  margin-left: 40px;
 }
 .Todo_Content {
   font-family: 'Nanum Myeongjo', serif;

@@ -85,11 +85,16 @@ function TodoList(props){
                 {
                     todoListLoad === 'Y' 
                     ? (
+                        <>
                         <div className="Todo_Add">
                             <input type="text" className="Todo_Add_Input" value={addContent} onKeyPress={addTodoList} onChange={(e)=>{setAddContent(e.target.value)}} />
                         </div>
+                        <hr  className="add_Line"/>
+                        </>
                     ) : null
                 }
+                
+                <br />
                 {
                     todoListLoad === 'N' 
                     ? (
