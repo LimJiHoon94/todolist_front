@@ -12,13 +12,15 @@ function TodoList(props){
 
     let [todoList , setTodoList] = useState([]);
     let [addContent , setAddContent] = useState('');
+    let [todoListLoad , setTodoListLoad] = useState('N');
+    let [completionTodoListLoad , setCompletionTodoListLoad] = useState('N');
     let today = new Date();   
 
     let year = today.getFullYear(); // 년도
     let month = today.getMonth() + 1;  // 월
     let date = today.getDate();  // 날짜
 
-    let [todoListLoad , setTodoListLoad] = useState('N');
+    
 
 
     const api = axios.create({
@@ -28,7 +30,13 @@ function TodoList(props){
         }
     });
 
-    
+    //Menu 선택화면으로 돌아가기
+    function goMenu(){
+        setTodoListLoad('N');
+        setCompletionTodoListLoad('N');
+    }
+
+
     //T_TODO_CONTENT 조회
     function getAllTodoList(){
         api.post('/getAllTodoContent' , null , {params : {
@@ -83,27 +91,51 @@ function TodoList(props){
             </div>
             <div className="todoList">
                 {
+                    //TODO LIST 추가 input
                     todoListLoad === 'Y' 
                     ? (
                         <>
                         <div className="Todo_Add">
-                            <input type="text" className="Todo_Add_Input" value={addContent} onKeyPress={addTodoList} onChange={(e)=>{setAddContent(e.target.value)}} />
+                            <input type="text" 
+                                   className="Todo_Add_Input" 
+                                   value={addContent} 
+                                   onKeyPress={addTodoList} 
+                                   onChange={(e)=>{setAddContent(e.target.value)}} />
                         </div>
                         <hr  className="add_Line"/>
                         </>
                     ) : null
                 }
                 
+                
                 <br />
                 {
-                    todoListLoad === 'N' 
+                    //TODO LIST 버튼
+                    todoListLoad === 'N' && completionTodoListLoad === 'N'
                     ? (
                         <div className="Todo_Get_Div">
-                            <button onClick={getAllTodoList} className="getTodoBtn">TODO - LIST</button>
+                            <button onClick={getAllTodoList} 
+                                    className="getTodoBtn"
+                            >TODO - LIST</button>
                         </div>
                     )  : null
                 }
                 {
+                    //완료한 TODO LIST 버튼
+                    completionTodoListLoad === 'N' && todoListLoad === 'N'
+                    ?(
+                        <>
+                        <br />
+                        <div className="Todo_Get_Div">
+                            <button onClick={getAllTodoList} 
+                                    className="getTodoBtn"
+                            >COMPLETION</button>
+                        </div>
+                        </>
+                    ) : null
+                }
+                {
+                    //TODO LIST 컨텐츠
                     todoListLoad === 'Y'
                     ? (
                         todoList.map((todoList , i)=>{
@@ -114,8 +146,18 @@ function TodoList(props){
             </div>
             <div className="add_area">
                 <div className="menu_area">
-                    <button className="allDelete" onClick={TodoListDeleteAll}><b>All<br />remove</b></button>
+                    <button className="menuBtn" onClick={goMenu}><b>menu</b></button>
                 </div>
+                {
+                    //전체삭제 버튼 
+                    todoListLoad === 'Y' 
+                    ?(
+                        <div className="menu_area">
+                            <button className="allDelete" onClick={TodoListDeleteAll}><b>All<br />remove</b></button>
+                        </div>        
+                    ) : null
+                }
+                
             </div>
         </div>
     )

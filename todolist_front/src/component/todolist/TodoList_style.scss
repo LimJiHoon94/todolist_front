@@ -91,6 +91,33 @@
   -ms-transform: scale(1.2);
   -o-transform: scale(1.2);
 }
+.menuBtn {
+  width: 5vw;
+  height: 10vh;
+  border-radius: 50px;
+  font-family: 'Nanum Myeongjo', serif;
+  cursor: pointer;
+  background-color: #5a3ae7bb;
+  border: 0.5px solid rgba(160, 100, 21, 0.651);
+  //마우스 효과 일반
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transition: all 0.3s ease-in-out;
+}
+.menuBtn:hover {
+  background-color: #382399bb;
+  color: white;
+  border: none;
+  //마우스 효과 호버
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
 
 .Todo_Get_Div {
   height: 5vh;
