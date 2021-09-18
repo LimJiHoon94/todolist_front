@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
+.completionList_Div {
+  width: 100%;
+}
+.completionList_Table {
+  background-color: white;
+  border-radius: 20px;
+}
+
+.completionList_Table > thead {
+  border-top-left-radius: 20px;
+}
+
+.completionList_Table > thead > tr > th,
+.completionList_Table > tbody > tr > td {
+  //border-bottom: 0.5px solid rgba(0, 0, 0, 0.205);
+  width: 100%;
+  height: 40px;
+  vertical-align: middle;
+  text-align: left;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.completionList_Table > tbody > tr > td {
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
+.completionList_Table > thead > tr > th {
+  font-size: 20px;
+  background-color: #ffbe76;
+  color: white;
+  padding-left: 15px;
+  padding-right: 0px;
+}
+.th_L {
+  border-top-left-radius: 10px;
+}
+.th_R {
+  border-top-right-radius: 10px;
+}
+.td_L {
+  border-bottom-left-radius: 10px;
+  border: none;
+}
+.td_R {
+  border-bottom-right-radius: 10px;
+  border: none;
+}

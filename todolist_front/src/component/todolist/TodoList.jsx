@@ -3,7 +3,8 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './TodoList_style.scss';
 import {useLocation} from 'react-router';
-
+import TodoContent from '../todoContent/TodoContent';
+import CompletionList from '../completionList/CompletionList';
 
 
 
@@ -14,6 +15,7 @@ function TodoList(props){
     let [addContent , setAddContent] = useState('');
     let [todoListLoad , setTodoListLoad] = useState('N');
     let [completionTodoListLoad , setCompletionTodoListLoad] = useState('N');
+    let [completionTodoList , setCompletionTodoList] = useState([]);
     let today = new Date();   
 
     let year = today.getFullYear(); // 년도
@@ -36,13 +38,26 @@ function TodoList(props){
         setCompletionTodoListLoad('N');
     }
 
+    //완료한 TODO LIST
+    function getCompletionList(){
+        api.post('/getAllCompletionList' , null , {params :{
+            userSeq : props.user.userSeq
+        }}).then((res)=>{
+            console.log(res);
+            setCompletionTodoList(res.data);
+        }).catch((error)=>{
+            alert(error)
+        });
+        setCompletionTodoListLoad('Y');
+    }
+
 
     //T_TODO_CONTENT 조회
     function getAllTodoList(){
         api.post('/getAllTodoContent' , null , {params : {
             userSeq : props.user.userSeq
          }}).then((res)=>{
-             console.log(res.data);
+             console.log(res);
              setTodoList(res.data);
          }).catch((error)=>{
              alert(error);
@@ -79,6 +94,8 @@ function TodoList(props){
              alert(error);
          }); 
     }
+
+
 
     return(
         <div className="todoList_area">
@@ -127,7 +144,7 @@ function TodoList(props){
                         <>
                         <br />
                         <div className="Todo_Get_Div">
-                            <button onClick={getAllTodoList} 
+                            <button onClick={getCompletionList} 
                                     className="getTodoBtn"
                             >COMPLETION</button>
                         </div>
@@ -138,10 +155,17 @@ function TodoList(props){
                     //TODO LIST 컨텐츠
                     todoListLoad === 'Y'
                     ? (
+                        
                         todoList.map((todoList , i)=>{
                             return  <TodoContent todoList={todoList} key={i}  setTodoList={setTodoList} user={props.user}/>
                         })
                     ) : null
+                }
+                {
+                    completionTodoListLoad === 'Y'
+                    ?(
+                        <CompletionList completionTodoList={completionTodoList}/>
+                    ):null
                 }
             </div>
             <div className="add_area">
@@ -163,38 +187,9 @@ function TodoList(props){
     )
 }
 
-function TodoContent(props){
-
-    const api = axios.create({
-        baseURL : 'http://localhost:8080/api/todoList',
-        headers : {
-            'Content-Type' : 'application/json'
-        }
-    });
-
-    //T_TODO_CONTENT 삭제
-    function deleteTodoContent(){
-        console.log(props.todoList.todoSeq);
-        api.post('/DeleteTodoContent' , null , {params : {
-            userSeq : props.user.userSeq,
-            todoSeq : props.todoList.todoSeq
-         }}).then((res)=>{
-             console.log(res.data)
-            props.setTodoList(res.data)
-         }).catch((error)=>{
-
-         }); 
-    }
-
-    return(
-    <div className="Todo_Content_Div">
-        <span className="Todo_Content">{props.todoList.content}</span>
-        <button className="Todo_Remove_Btn" onClick={deleteTodoContent}>remove</button>
-    </div>
-    )
-}
-
 
 export default TodoList;
+
+
 
 
